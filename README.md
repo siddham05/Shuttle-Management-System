@@ -168,6 +168,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Siddham Jain - siddhamj5@gmail.com
+Siddham Jain - siddhamj05@gmail.com
 
 Project Link: [https://github.com/siddham05/campus-shuttle](https://github.com/siddham05/campus-shuttle)
