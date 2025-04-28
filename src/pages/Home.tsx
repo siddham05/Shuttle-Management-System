@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bus, MapPin, Clock, Shield, CreditCard, Users } from 'lucide-react';
 
 export default function Home() {
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    fetch('https://p4nuoxoppyoj4oiinisjbumwvy0vrxlx.lambda-url.ap-south-1.on.aws/default/ShuttleHelloWorld')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data); // Check in console
+        setMessage(data.message); // Assuming your Lambda returns { message: "Hello from Lambda" }
+      })
+      .catch(error => {
+        console.error('Error fetching Lambda:', error);
+      });
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       {/* Hero Section */}
@@ -42,6 +56,12 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Message Section */}
+      <div className="flex flex-col items-center justify-center py-12 bg-white">
+        <h2 className="text-3xl font-bold mb-4">Campus Shuttle System</h2>
+        <p className="text-lg">Message from server: {message || 'Loading...'}</p>
       </div>
 
       {/* Features Section */}

@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Bus } from 'lucide-react';
 import { useAuthStore } from './store/authStore';
+import ShuttleStatus from "./ShuttleStatus";
 
 // Lazy load components
 const Home = React.lazy(() => import('./pages/Home'));
@@ -61,6 +62,10 @@ function App() {
             path="/dashboard/*"
             element={user ? <Dashboard /> : <Navigate to="/login" replace />}
           />
+
+          {/* 🔥 ADD THIS NEW ROUTE FOR SHUTTLE STATUS PAGE */}
+          <Route path="/shuttle-status" element={<ShuttleStatus />} />
+          
         </Routes>
       </React.Suspense>
     </Router>
